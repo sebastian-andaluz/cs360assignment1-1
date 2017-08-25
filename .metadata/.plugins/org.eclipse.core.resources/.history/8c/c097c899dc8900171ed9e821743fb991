@@ -17,8 +17,6 @@ public class testClass {
 			GeocodingResult[] results =  GeocodingApi.geocode(context,"NorthSide High School").await();
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			System.out.println(gson.toJson(results[0].addressComponents));	
-			
-			School blah = new School();
 	}
 
 }

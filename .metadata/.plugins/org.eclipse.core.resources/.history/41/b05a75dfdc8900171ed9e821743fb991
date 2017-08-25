@@ -18,7 +18,7 @@ public class testClass {
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			System.out.println(gson.toJson(results[0].addressComponents));	
 			
-			School blah = new School();
+			
 	}
 
 }
