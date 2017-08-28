@@ -1,0 +1,115 @@
+package cs360Project1;
+import com.google.*;
+import com.google.maps.GeoApiContext;
+
+public class School {
+	String schoolName;
+	String schoolAddress;
+	int enrollment;	//Enrollment size of school
+	int classification;
+	//T/F There exists a boys/girls team
+	boolean boyTeam;
+	boolean girlTeam;
+	//T/F Willing to Host on Level
+	boolean hostSectional;
+	boolean hostRegional;
+	boolean hostSemi;
+	//Organizational number of sect/reg/semi school assigned to
+	int sectionalNumber;
+	int regionalNumber;
+	int semiNumber;
+	//array of distances to hosts of sectional
+	double [] distanceToSectionalHost;
+	
+	//default constructor
+	public School(){
+		
+	}
+	
+	//Constructor for Schools using information from text file
+	public School(String name, int newEnrollment, boolean boyExists, 
+			boolean girlExists, boolean sectionalHost, boolean regionalHost, boolean semiHost){
+		name = schoolName;
+		enrollment = newEnrollment;
+		boyTeam = boyExists;
+		girlTeam = girlExists;
+		hostSectional = sectionalHost;
+		hostRegional = regionalHost;
+		hostSemi = semiHost;
+	}
+	//TODO: Need Distance
+	public void sectHostDistances(School[] sectionalHosts){
+		distanceToSectionalHost = new double[sectionalHosts.length];
+		for (int counter = 0; counter <= sectionalHosts.length; counter++){
+			//TODO: Needs calcDistanceMethod
+			int distance = 0;
+			//distance = distanceMethod(school, hostSchool);
+			distanceToSectionalHost[counter] = distance;
+			
+		}
+	}
+		public double[] getHostDistances(){
+		return distanceToSectionalHost;
+	}
+	
+	public void setName(String newName) {
+		schoolName = newName;
+	}
+	public String getName() {
+		return schoolName;
+	}
+	//Address access
+	public void setAddress(String address){
+		schoolAddress = address;
+	}
+	public String getAddress(){
+		return schoolAddress;
+	}
+	public void setEnrollment(int newEnrollment) {
+		enrollment = newEnrollment;
+	}
+	public int getEnrollment() {
+		return enrollment;
+	}
+	
+	//TODO: Do we want to calculate class in or out of 
+	
+	public int getClassification() {
+		return classification;
+	}
+	public void setBoyTeam(boolean newTeam) {
+		boyTeam = newTeam;
+	}
+	public boolean getBoyTeam() {
+		return boyTeam;
+	}
+	public void setGirlTeam(boolean newTeam) {
+		girlTeam = newTeam;
+	}
+	public boolean getGirlTeam() {
+		return girlTeam;
+	}
+	public void setWillHostSectional(boolean willing){
+		hostSectional = willing;
+	}
+	public boolean getWillHostSectional(){
+		return hostSectional;
+	}
+	public void setWillHostRegional(boolean willing){
+		hostRegional = willing;
+	}
+	public boolean getWillHostRegional(){
+		return hostRegional;
+	}
+	public void setWillHostSemi(boolean willing){
+		hostSemi = willing;
+	}
+	public boolean getWillHostSemi(){
+		return hostSemi;
+	}
+	
+	
+
+
+
+}

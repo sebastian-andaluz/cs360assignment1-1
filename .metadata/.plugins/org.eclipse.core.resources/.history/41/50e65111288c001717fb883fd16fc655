@@ -1,0 +1,6 @@
+package cs360Project1;
+
+public class Regional extends Sectional{
+
+	
+}
