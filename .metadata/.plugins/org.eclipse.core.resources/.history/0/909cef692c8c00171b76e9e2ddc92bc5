@@ -1,0 +1,19 @@
+package cs360Project1;
+
+import java.util.ArrayList;
+
+public class SchoolBuilder {
+	
+	School[] schools;
+	
+	public School[] schoolBuilder(ArrayList array){
+		schools = new School[500];
+		while(array.)
+		
+		
+		return schools;
+		
+	}
+	
+	
+}
