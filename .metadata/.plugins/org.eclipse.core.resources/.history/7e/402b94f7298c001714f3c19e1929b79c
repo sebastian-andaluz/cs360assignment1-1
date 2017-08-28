@@ -1,0 +1,35 @@
+package cs360Project1;
+import java.io.IOException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.GeocodingResult;
+
+public class Mapping {
+	
+	//Takes String and uses Google search to find the latitude and longitude of that location
+	public Double[] getCoordinates(String schoolName) throws ApiException, InterruptedException, IOException{
+		//array latlon will have the format [lat, lon]
+		Double[] latlng = new Double[2];
+		
+		GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyDgpj6yqpntebQXU_4wTTNqNwoq4X5gz-I").build();
+		GeocodingResult[] results =  GeocodingApi.geocode(context,"Northside Highschool IN").await();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		latlng[0] = Double.parseDouble(gson.toJson(results[0].geometry.location.lat));
+		latlng[1] = Double.parseDouble(gson.toJson(results[0].geometry.location.lng));
+		
+		return latlng;
+	}
+	
+	//takes an array of size 2 that contains a latitude and longitude as parameters and returns the distance between them
+	//
+	public double getDistanceBetween(double[] latlng){
+		double distance;
+		distance = 0;
+		
+		return distance;
+	}
+
+}

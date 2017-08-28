@@ -1,0 +1,25 @@
+package cs360Project1;
+
+public class LoopTest {
+
+	public static void main(String args) {
+		boolean bool = true;
+		for (int i = 0; i< 400; i++)
+		{
+			for (int j = 0; j < 35; j++)
+			{
+				int k = 1 + 1;
+				if (bool = true)
+				{
+					bool = false;
+				}
+				else 
+				{
+					bool = true;
+				}
+			}
+		}
+		System.out.println("This is done");
+		
+	}
+}

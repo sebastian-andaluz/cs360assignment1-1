@@ -1,0 +1,17 @@
+package cs360Project1;
+
+public class SemiState extends Regional
+{
+	
+	Regional[] SemiState;
+	
+	public SemiState()
+	{}
+	
+	public SemiState(School host, Regional[] memberRegionals)
+	{
+		
+		regional = memberRegionals;
+	}
+	
+}

@@ -23,7 +23,6 @@ public class School {
 	
 	//default constructor
 	public School(){
-		
 	}
 	
 	//Constructor for Schools using information from text file
@@ -45,16 +44,98 @@ public class School {
 			int distance = 0;
 			//distance = distanceMethod(school, hostSchool);
 			distanceToSectionalHost[counter] = distance;
-			
 		}
 	}
-	//address accessers
+		public double[] getHostDistances(){
+		return distanceToSectionalHost;
+	}
+	
+	public void setName(String newName) {
+		schoolName = newName;
+	}
+	public String getName() {
+		return schoolName;
+	}
+	//Address access
 	public void setAddress(String address){
 		schoolAddress = address;
 	}
 	public String getAddress(){
 		return schoolAddress;
 	}
-
+	public void setEnrollment(int newEnrollment) {
+		enrollment = newEnrollment;
+	}
+	public int getEnrollment() {
+		return enrollment;
+	}
+	public void setClassification(int[] ranges) {
+		for (int x=0; x<ranges.length; x++) {
+			if (enrollment <= ranges[x])
+			{
+				classification = x + 1;
+				return;
+			}
+		}
+	}
+	public int getClassification() {
+		return classification;
+	}
+	public void setBoyTeam(boolean newTeam) {
+		boyTeam = newTeam;
+	}
+	public boolean getBoyTeam() {
+		return boyTeam;
+	}
+	public void setGirlTeam(boolean newTeam) {
+		girlTeam = newTeam;
+	}
+	public boolean getGirlTeam() {
+		return girlTeam;
+	}
+	public void setWillHostSectional(boolean willing){
+		hostSectional = willing;
+	}
+	public boolean getWillHostSectional(){
+		return hostSectional;
+	}
+	public void setWillHostRegional(boolean willing){
+		hostRegional = willing;
+	}
+	public boolean getWillHostRegional(){
+		return hostRegional;
+	}
+	public void setWillHostSemi(boolean willing){
+		hostSemi = willing;
+	}
+	public boolean getWillHostSemi(){
+		return hostSemi;
+	}
+	public void setSectionalNumber(int number) {
+		sectionalNumber = number;
+	}
+	public int getSectionalNumber() {
+		return sectionalNumber;
+	}
+	public void setRegionalNumber(int number) {
+		regionalNumber = number;
+	}
+	public int getRegionalNumber() {
+		return regionalNumber;
+	}
+	public void setSemiNumber(int number) {
+		semiNumber = number;
+	}
+	public int getSemiNumber() {
+		return semiNumber;
+	}
+	public void setSectionalDistances(double[] distances) {
+		for (int x = 0; x < distances.length; x++) {
+			distanceToSectionalHost[x] = distances[x];
+		}
+	}
+	public double[] getSectionalDistances() {
+		return distanceToSectionalHost;
+	}
 
 }

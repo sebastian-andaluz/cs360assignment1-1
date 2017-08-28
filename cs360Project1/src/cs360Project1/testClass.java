@@ -12,13 +12,8 @@ import com.google.maps.model.GeocodingResult;
 public class testClass {
 
 	public static void main(String[] args) throws ApiException, InterruptedException, IOException {
-		// TODO Auto-generated method stub
-		GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyDgpj6yqpntebQXU_4wTTNqNwoq4X5gz-I").build();
-			GeocodingResult[] results =  GeocodingApi.geocode(context,"NorthSide High School").await();
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-			System.out.println(gson.toJson(results[0].addressComponents));	
-			
-			School blah = new School();
+		
+		
 	}
 
 }
