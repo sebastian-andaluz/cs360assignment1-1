@@ -8,23 +8,28 @@ import java.util.Scanner;
 
 public class FileCrawler {
 		
-	File file = new File("SchoolList.txt");
-	FileReader reader;
-	int i = 0;
-	int j = 0;
-	String[] array1;
-	Scanner skan;
-	Scanner scan;
 	
-	public int length(){
+	FileReader reader;
+	
+	
+	
+	
+	
+	
+	public static int length(){
+		int j = 0;
+		Scanner scan = null;
+		String curLine = "";
+		File file = new File("SchoolList.txt");
 		try {
 			scan = new Scanner(file);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		while(scan.hasNext()){
-			scan.nextLine();
+		while(scan.hasNextLine()){
+			curLine = scan.nextLine();
+		//	System.out.println(curLine);
 			j++;
 		}
 		return j;
@@ -35,8 +40,12 @@ public class FileCrawler {
 		
 		
 	
-	public String[] getArray(int x) {
+	public static String[] getArray(int x) {
+		int i = 0;
+		String[] array1;
+		File file = new File("SchoolList.txt");
 		array1 = new String[x];
+		Scanner skan = null;
 		try {
 			skan = new Scanner(file);
 		} catch (FileNotFoundException e) {

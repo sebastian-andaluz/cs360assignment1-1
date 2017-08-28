@@ -5,21 +5,25 @@ import java.util.StringTokenizer;
 
 public class SchoolBuilder {
 	
-	School[] schools;
-	int a = 0;
-	String temp;
-	String delimiter;
-	StringTokenizer splitter;
 	
-	public School[] getSchools(String[] input, int length){
+	
+	public static School[] getSchools(String[] input, int length){
+		
+		School[] schools;
+		int a = 0;
+		String temp;
+		String delimiter;
+		StringTokenizer splitter;
 				
 		schools = new School[length];
 		delimiter = "*";
 		for(int i = 0; i < length; i++){
-			
+			School tempSchool = new School();
+			schools[i] = tempSchool;
 			splitter = new StringTokenizer(input[i], delimiter);
 			schools[i].schoolName = splitter.nextToken();
 			schools[i].enrollment = Integer.parseInt(splitter.nextToken());
+			System.out.println(schools[i].schoolName);
 			
 			//
 			

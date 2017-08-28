@@ -1,0 +1,23 @@
+package cs360Project1;
+
+public class driver {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//MainGUI mainWindow = new MainGUI();
+		int a = FileCrawler.length();
+		
+		System.out.println(a);
+		
+		String[] input;
+		
+		input = FileCrawler.getArray(a);
+		
+		System.out.println(input[393]);
+		
+
+	}
+	
+	
+}

@@ -1,21 +1,10 @@
-<<<<<<< HEAD
-IMPORT_FILES_AND_FOLDERS_RELATIVE=true
-IMPORT_FILES_AND_FOLDERS_TYPE=23,1
-PROBLEMS_FILTERS_MIGRATE=true
-eclipse.preferences.version=1
-platformState=1494688370111
-=======
-<<<<<<< HEAD
-PROBLEMS_FILTERS_MIGRATE=true
-eclipse.preferences.version=1
-platformState=1501898744774
-=======
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=175ce05ff6aa33a76bc5e727dc8ba941c0b45832
 IMPORT_FILES_AND_FOLDERS_RELATIVE=true
 IMPORT_FILES_AND_FOLDERS_TYPE=23,1\:7,1
 PROBLEMS_FILTERS_MIGRATE=true
 eclipse.preferences.version=1
-platformState=1485929844652
->>>>>>> 20ab330c3d535a7bfca7a6cf9a146ef9104a3a3f
->>>>>>> 175ce05ff6aa33a76bc5e727dc8ba941c0b45832
+platformState=1494688370111
 quickStart=false
 tipsAndTricks=true

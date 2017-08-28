@@ -5,9 +5,23 @@ public class driver {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		MainGUI mainWindow = new MainGUI();
-
+		//MainGUI mainWindow = new MainGUI();
+		int a = FileCrawler.length();
+		
+		System.out.println(a);
+		
+		String[] input;
+		
+		input = FileCrawler.getArray(a);
+		
+		//System.out.println(input[391]);
+		
+		School[] schools = SchoolBuilder.getSchools(input, 393);
+		
+		
+		
 
 	}
-
+	
+	
 }
