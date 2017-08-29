@@ -1,4 +1,6 @@
 package cs360Project1;
+import java.util.ArrayList;
+
 import com.google.*;
 import com.google.maps.GeoApiContext;
 
@@ -19,7 +21,11 @@ public class School {
 	int regionalNumber;
 	int semiNumber;
 	//array of distances to hosts of sectional
-	double [] distanceToSectionalHost;
+	////////double [] distanceToSectionalHost;
+	ArrayList<Double> distanceToSectionalHost = new ArrayList<Double>();
+	
+	double[] coordinates = new double[2];
+	
 	
 	//default constructor
 	public School(){
@@ -37,16 +43,20 @@ public class School {
 		hostSemi = semiHost;
 	}
 	//TODO: Need Distance
-	public void sectHostDistances(School[] sectionalHosts){
-		distanceToSectionalHost = new double[sectionalHosts.length];
-		for (int counter = 0; counter <= sectionalHosts.length; counter++){
+	public void sectHostDistances(ArrayList<School> sectionalHosts){//School[] sectionalHosts){
+		//distanceToSectionalHost = new double[sectionalHosts.length];
+		distanceToSectionalHost = new ArrayList<Double>(sectionalHosts.size());
+		for (int counter = 0; counter <= sectionalHosts.size(); counter++){
 			//TODO: Needs calcDistanceMethod
-			int distance = 0;
+			double distance = 0;
 			//distance = distanceMethod(school, hostSchool);
-			distanceToSectionalHost[counter] = distance;
+			////distanceToSectionalHost[counter] = distance;
+			
+			distanceToSectionalHost.add(counter, distance);
 		}
 	}
-		public double[] getHostDistances(){
+	
+	public ArrayList<Double> getHostDistances(){
 		return distanceToSectionalHost;
 	}
 	
@@ -129,13 +139,37 @@ public class School {
 	public int getSemiNumber() {
 		return semiNumber;
 	}
-	public void setSectionalDistances(double[] distances) {
-		for (int x = 0; x < distances.length; x++) {
-			distanceToSectionalHost[x] = distances[x];
+	public void setSectionalDistances(ArrayList<Double> distances) {
+		for (int x = 0; x < distances.size(); x++) {
+			//distanceToSectionalHost[x] = distances[x];
+			distanceToSectionalHost.set(x, distances.get(x));
 		}
 	}
-	public double[] getSectionalDistances() {
+	public ArrayList<Double> getSectionalDistances() {
 		return distanceToSectionalHost;
+	}
+	
+	public void setCoordinates(double[] coordinates)
+	{
+		for(int i = 0; i < coordinates.length; i++)
+		{
+			this.coordinates[i] = coordinates[i];
+		}
+	}
+	
+	public double[] getCoordinates()
+	{
+		return coordinates;
+	}
+	
+	public double getLat()
+	{
+		return coordinates[0];
+	}
+	
+	public double getLng()
+	{
+		return coordinates[1];
 	}
 
 }

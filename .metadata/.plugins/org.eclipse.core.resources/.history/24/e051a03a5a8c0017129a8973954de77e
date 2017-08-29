@@ -1,0 +1,15 @@
+package cs360Project1;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class CalculateDistances 
+{
+
+	public static void main(String args) throws IOException 
+	{
+		FileWriter fw = new FileWriter("distanceOutput.txt");
+		
+		
+	}
+}

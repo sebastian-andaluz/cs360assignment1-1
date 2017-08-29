@@ -1,15 +1,19 @@
 package cs360Project1;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
+import com.google.maps.errors.ApiException;
 
 public class SchoolBuilder {
 	
 	
 	
-	public static School[] getSchools(String[] input, int length){
+	public static School[] getSchools(String[] input, int length) throws ApiException, InterruptedException, IOException{
 		
 		School[] schools;
+		Mapping map = new Mapping();
 		int a = 0;
 		String temp;
 		String delimiter;
@@ -23,12 +27,15 @@ public class SchoolBuilder {
 			splitter = new StringTokenizer(input[i], delimiter);
 			schools[i].schoolName = splitter.nextToken();
 			schools[i].enrollment = Integer.parseInt(splitter.nextToken());
-			System.out.println(schools[i].schoolName);
+			schools[i].setCoordinates(map.getCoordinates(schools[i].schoolName));
+			System.out.println(i);
+			//System.out.println(schools[i].schoolName);
+			//System.out.print(schools[i].coordinates[0] + " " + schools[i].coordinates[1] + "\n\n");
 			
 			//
 			
 			temp = splitter.nextToken();
-			if(temp == "T"){
+			if(temp == "T" || temp == "t"){
 				schools[i].boyTeam=true;
 			}
 			else{

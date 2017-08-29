@@ -1,8 +1,12 @@
 package cs360Project1;
 
+import java.io.IOException;
+
+import com.google.maps.errors.ApiException;
+
 public class driver {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ApiException, InterruptedException, IOException {
 		// TODO Auto-generated method stub
 		
 		//MainGUI mainWindow = new MainGUI();
@@ -16,7 +20,7 @@ public class driver {
 		
 		//System.out.println(input[391]);
 		
-		School[] schools = SchoolBuilder.getSchools(input, 393);
+		School[] schools = SchoolBuilder.getSchools(input, 392);
 		
 		
 		

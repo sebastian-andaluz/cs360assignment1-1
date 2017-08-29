@@ -251,7 +251,7 @@ Indianapolis Lutheran highschool*251*T*T*F*F*F
 Indianapolis Scecina Memorial highschool*449*T*T*F*F*F
 Indianapolis Lighthouse Charter School*277*T*T*F*F*F
 Morristown highschool*194*T*T*F*F*F
-New Palastine highschool*1119*T*T*T*F*F
+New Palestine highschool*1119*T*T*T*F*F
 Roncalli highschool*1184*T*T*F*F*F
 Triton Central highschool*468*T*T*F*F*F
 Warren Central highschool*3736*T*T*F*F*F
@@ -315,7 +315,7 @@ Rockville High School*224*t*t*f*f*f
 Shakamak High School*240*t*t*f*f*f
 South Vermillion High School*546*t*t*f*f*f
 Sullivan High School*591*t*t*f*f*f
-Terre Haute North High School*1854*t*t*f*f*f
+Terre Haute North High School*1854*t*t*t*f*f
 Terre Haute South High School*1778*t*t*t*f*f
 West Vigo High School*577*t*t*f*f*f
 Bedford-North Lawrence High School*1542*t*t*t*t*f
@@ -384,9 +384,8 @@ Castle High School*1934*t*t*f*f*f
 Evansville Bosse High School*802*t*t*f*f*f
 Evansville Central High School*1185*t*t*f*f*f
 Evansville Harrison High School*1243*t*t*f*f*f
-Evansville Mater Dei High School*529*t*t*t*f*f
 Evansville Reitz Memorial High School*690*t*t*f*f*f
-Evansville North High School*1614*t*t*f*f*f
+Evansville North High School*1614*t*t*t*f*f
 Evansville F. J. Reitz High School*1355*t*t*f*f*f
 Mt. Vernon High School*658*t*t*f*f*f
 North Posey High School*498*t*t*f*f*f

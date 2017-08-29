@@ -13,12 +13,15 @@ public class Mapping {
 	public static double[] getCoordinates(String schoolName) throws ApiException, InterruptedException, IOException{
 		//array latlon will have the format [lat, lon]
 		double[] latlng = new double[2];
-		
-		GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyDgpj6yqpntebQXU_4wTTNqNwoq4X5gz-I").build();
+			
+		GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyBgMiAoxARqgj3jtc1jZz6qoUqP_7gce2c").build();
 		GeocodingResult[] results =  GeocodingApi.geocode(context,schoolName).await();
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		latlng[0] = Double.parseDouble(gson.toJson(results[0].geometry.location.lat));
-		latlng[1] = Double.parseDouble(gson.toJson(results[0].geometry.location.lng));
+		
+		latlng[0] = results[0].geometry.location.lat;
+		latlng[1] = results[0].geometry.location.lng;
+		
+		
 		
 		return latlng;
 	}
