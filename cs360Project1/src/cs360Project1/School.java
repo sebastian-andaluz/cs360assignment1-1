@@ -55,6 +55,20 @@ public class School {
 			distanceToSectionalHost.add(counter, distance);
 		}
 	}
+	/*
+	 * Working method of distance to Host
+	 */
+	public double[] addDistanceToHost(School[] hostSchools)
+	{
+		double[] distances = new double[hostSchools.length];
+		
+		for(int j = 0; j < hostSchools.length; j++)
+		{
+			distances[j] = Mapping.getDistanceBetween(this.getLat(), this.getLng(), 
+					hostSchools[j].getLat(), hostSchools[j].getLng());
+		}
+		return distances;
+	}
 	
 	public ArrayList<Double> getHostDistances(){
 		return distanceToSectionalHost;
@@ -160,6 +174,16 @@ public class School {
 	public double[] getCoordinates()
 	{
 		return coordinates;
+	}
+	
+	public void setLat(double lat)
+	{
+		coordinates[0] = lat;
+	}
+	
+	public void setLng(double lng)
+	{
+		coordinates[1] = lng;
 	}
 	
 	public double getLat()

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class SectionalSort {
 
+	School[] leftOverSchools;
 
 	int overFlow;
 	//Returns an array of Schools (Divided by sectional they belong to
@@ -50,6 +51,34 @@ public class SectionalSort {
 		}
 		
 		return sectionals;
+	}
+	
+	public void SectionalSort(School[] allSchools, School[] hostSchools, int numSectionals)
+	{
+		int schoolsPerSectional = allSchools.length/numSectionals;
+		int leftOverAmount = allSchools.length%numSectionals;
+		double smallestDistance;
+		double[] distances;
+		leftOverSchools = new School[leftOverAmount];
+		int index;
+		School schoolToAdd;
+		
+		for(int i = 0; i < allSchools.length; i++)
+		{
+			//the smallest distance available, set at a large number to ensure setting distance for the first element
+			smallestDistance = Double.MAX_VALUE;
+			//creates an array of distances from school to all host schools
+			distances = allSchools[i].addDistanceToHost(hostSchools);
+			for(int j = 0; j < distances.length; j++)
+			{
+				if(distances[j] < smallestDistance)
+				{
+					smallestDistance = distances[j];
+					index = j;
+					//TODO:need to create arraylist to add the closest school, but where to create it?
+				}
+			}
+		}
 	}
 	
 }

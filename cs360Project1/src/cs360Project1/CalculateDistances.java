@@ -16,14 +16,14 @@ public class CalculateDistances
 		String[] input;
 		double distance;
 		
-		input = FileCrawler.getArray(a);
+		input = FileCrawler.getSchoolArray(a);
 		
 		School[] schools = SchoolBuilder.getSchools(input, 392);
 		
 		for(int i = 0; i < schools.length; i++)
 		{
-			System.out.println(schools[i].schoolName + "*" + schools[i].getLat() + "*" + schools[i].getLng());
-			fw.write(schools[i].schoolName + "*" + schools[i].getLat() + "*" + schools[i].getLng() + "\n");
+			//System.out.println(schools[i].schoolName + "*" + schools[i].getLat() + "*" + schools[i].getLng());
+			//fw.write(schools[i].schoolName + "*" + schools[i].getLat() + "*" + schools[i].getLng() + "\n");
 		}
 		
 //		for(int i = 0; i < schools.length; i++)
