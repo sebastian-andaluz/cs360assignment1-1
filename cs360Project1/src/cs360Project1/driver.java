@@ -23,7 +23,8 @@ public class driver {
 		
 		School[] schools = SchoolBuilder.getSchools(schoolInput, 392);
 		
-		//for(int i = 0; i < schools.length; i++){if(schools[i].hostSectional == true){System.out.println(schools[i].schoolName);}}
+		for(int i = 0; i < schools.length; i++){if(schools[i].hostSectional == true){System.out.println(schools[i].schoolName);}}
+		
 		
 		//double[] arr = schools[1].addDistanceToHost(SchoolBuilder.hostSectionals);
 		

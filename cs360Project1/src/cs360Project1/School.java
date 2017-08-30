@@ -195,5 +195,27 @@ public class School {
 	{
 		return coordinates[1];
 	}
-
+	
+	//This method takes a string, int, and boolean. The string is the school we want to modify, int represents level of host competition
+	//1 = sectional, 2=regional, 3= semistate, Boolean represents whether we want to make that school a host or make that school not a host
+	public static void alterHost(School[] schools,String schoolName, int hostLevel, boolean hostOrNot){
+		//index will hold index of school once we find it in the array based on schoolName
+		int index;
+		for(index = 0; index < schools.length; index++){
+			if(schools[index].getName().equals(schoolName)){
+				break;
+			}
+		}
+		//switch case will alter level associated with hostLevel based on the boolean value hostOrNot
+		switch(hostLevel){
+		case 1: schools[index].setWillHostSectional(hostOrNot);
+				break;
+		case 2: schools[index].setWillHostRegional(hostOrNot);
+				break;
+		case 3: schools[index].setWillHostSemi(hostOrNot);
+				break;
+				
+		}
+		
+	}
 }
