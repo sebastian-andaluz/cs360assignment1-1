@@ -9,13 +9,7 @@ import java.util.Scanner;
 public class FileCrawler {
 		
 	
-	FileReader reader;
-	
-	
-	
-	
-	
-	
+	FileReader reader;	
 	public static int length(){
 		int j = 0;
 		Scanner scan = null;
@@ -35,10 +29,7 @@ public class FileCrawler {
 		return j;
 		
 		
-	}
-	
-		
-		
+	}	
 	
 	public static String[] getSchoolArray(int x) {
 		int i = 0;

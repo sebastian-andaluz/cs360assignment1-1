@@ -13,12 +13,9 @@ public class testClass {
 
 	public static void main(String[] args) throws ApiException, InterruptedException, IOException 
 	{
-		double[] arr = Mapping.getCoordinates("Evansville Mater Dei High School");
+		//double[] arr = Mapping.getCoordinates("Evansville Mater Dei High School");
 		
-		for(int i = 0; i < 2; i++)
-		{
-			System.out.println(arr[i]);
-		}
+		System.out.println(Mapping.getDistanceBetween(41.574060,-87.344263, 41.576262, -87.487502));
 	}
 
 }

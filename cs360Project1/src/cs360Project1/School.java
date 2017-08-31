@@ -6,7 +6,7 @@ import com.google.maps.GeoApiContext;
 
 public class School {
 	String schoolName;
-	String schoolAddress;
+
 	int enrollment;	//Enrollment size of school
 	int classification;
 	//T/F There exists a boys/girls team
@@ -70,23 +70,13 @@ public class School {
 		return distances;
 	}
 	
-	public ArrayList<Double> getHostDistances(){
-		return distanceToSectionalHost;
-	}
-	
 	public void setName(String newName) {
 		schoolName = newName;
 	}
 	public String getName() {
 		return schoolName;
 	}
-	//Address access
-	public void setAddress(String address){
-		schoolAddress = address;
-	}
-	public String getAddress(){
-		return schoolAddress;
-	}
+
 	public void setEnrollment(int newEnrollment) {
 		enrollment = newEnrollment;
 	}
@@ -162,6 +152,11 @@ public class School {
 	public ArrayList<Double> getSectionalDistances() {
 		return distanceToSectionalHost;
 	}
+	//returns the distance to host school in position x
+	public double getSectionalDistances(int x)
+	{
+		return distanceToSectionalHost.get(x);
+	}
 	
 	public void setCoordinates(double[] coordinates)
 	{
@@ -195,27 +190,5 @@ public class School {
 	{
 		return coordinates[1];
 	}
-	
-	//This method takes a string, int, and boolean. The string is the school we want to modify, int represents level of host competition
-	//1 = sectional, 2=regional, 3= semistate, Boolean represents whether we want to make that school a host or make that school not a host
-	public static void alterHost(School[] schools,String schoolName, int hostLevel, boolean hostOrNot){
-		//index will hold index of school once we find it in the array based on schoolName
-		int index;
-		for(index = 0; index < schools.length; index++){
-			if(schools[index].getName().equals(schoolName)){
-				break;
-			}
-		}
-		//switch case will alter level associated with hostLevel based on the boolean value hostOrNot
-		switch(hostLevel){
-		case 1: schools[index].setWillHostSectional(hostOrNot);
-				break;
-		case 2: schools[index].setWillHostRegional(hostOrNot);
-				break;
-		case 3: schools[index].setWillHostSemi(hostOrNot);
-				break;
-				
-		}
-		
-	}
+
 }
