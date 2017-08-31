@@ -15,7 +15,11 @@ public class testClass {
 	{
 		//double[] arr = Mapping.getCoordinates("Evansville Mater Dei High School");
 		
-		System.out.println(Mapping.getDistanceBetween(41.574060,-87.344263, 41.576262, -87.487502));
+		System.out.println("" + Mapping.getDistanceBetween(40.7128, -74.0059, 34.052235, -118.243683));
+		System.out.println("" + Mapping.DistanceBetweenSchools(40.7128, -74.0059, 34.052235, -118.243683));
+		
+		
+
 	}
 
 }

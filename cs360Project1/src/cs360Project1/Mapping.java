@@ -29,16 +29,42 @@ public class Mapping {
 	//takes an array of size 2 that contains a latitude and longitude as parameters and returns the distance between them
 	//
 	public static double getDistanceBetween(double lat1, double lng1, double lat2, double lng2){
-		double R = 6372.8; // radius of the earth, distance is in kilometers
-		double dLat = Math.toRadians(lat2 - lat1);
-		double dLon = Math.toRadians(lng2-lng1);
-		lat1 = Math.toRadians(lat1);
-		lat2 = Math.toRadians(lat2);
+		double R = 6371; // radius of the earth, distance is in kilometers
 		
-		double a = Math.pow(Math.sin(dLat / 2),2) + Math.pow(Math.sin(dLon / 2),2) * Math.cos(lat1) * Math.cos(lat2);
-        double c = 2 * Math.asin(Math.sqrt(a));
+		double radians = 3.14159/180;
+		
+		double dLat = (radians*lat2 - radians*lat1);
+		double dLon = (radians*lng2-radians*lng1);
+		lat1 = (lat1)*radians;
+		lat2 = (lat2)*radians;
+		
+		//double a = Math.pow(Math.sin(dLat / 2),2) + Math.pow(Math.sin(dLon / 2),2) * Math.cos(lat1) * Math.cos(lat2);
+		double a = Math.sin(dLat/2) * Math.sin(dLat/2) +Math.cos((lat1)) * Math.cos((lat2)) 
+			      * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        //System.out.println("Sebastian a: " + a);
+
+		         // Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+       // System.out.println("Sebastians c: " + c);
         double distance = R * c;
         return distance;
 	}
+	
+	public static double DistanceBetweenSchools (double lat1, double lng1, double lat2, double lng2) {
+        double DEG_TO_RAD = 3.14159/180;
+        double EARTH_RADIUS = 6371; //Earth radius in km
+
+        double rad_lat1 = lat1 * DEG_TO_RAD;
+        double rad_lng1 = lng1 * DEG_TO_RAD;
+        double rad_lat2 = lat2 * DEG_TO_RAD;
+        double rad_lng2 = lng2 * DEG_TO_RAD;
+        
+        double a = Math.pow(Math.sin((rad_lat1 - rad_lat2)/2),2) + Math.cos(rad_lat1) * Math.cos(rad_lat2) * Math.pow(Math.sin((rad_lng1 - rad_lng2) / 2), 2);
+        //System.out.println("Micah a: " + a);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        //System.out.println("Micah c: " + c);
+
+        return c * EARTH_RADIUS;
+    }
 
 }

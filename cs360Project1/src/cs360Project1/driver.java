@@ -41,7 +41,7 @@ public class driver {
 		SectionalSort sort = new SectionalSort();
 		
 		sort.SectionalSort(schools, testSec, 32);
-		int sect = 1;
+		int sect = 31;
 		for(int j = 0; j < testSec[sect].sectional.size(); j++)
 		{
 			System.out.print(testSec[sect].sectional.get(j).schoolName);
