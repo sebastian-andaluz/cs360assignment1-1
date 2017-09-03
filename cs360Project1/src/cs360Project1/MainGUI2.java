@@ -15,8 +15,8 @@ public class MainGUI2 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainGUI2 window = new MainGUI2();
-					window.frame.setVisible(true);
+					MainGUI window = new MainGUI();
+					//window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
