@@ -24,10 +24,6 @@ public class driver {
 		//TODO: make array of sectionals
 		School[] schools = SchoolBuilder.getSchools(schoolInput, a);
 		
-		ClassSort testSort = new ClassSort();
-		testSort.classSort(schools);
-		
-		/*
 		int secCounter = 0;
 		int regCounter = 0;
 		int semCounter = 0;
@@ -143,7 +139,7 @@ public class driver {
 						testSem[sem].getLat(), testSem[sem].getLng()));
 			}
 			System.out.println("\n");
-		}*/
+		}
 		
 		//test to see what is the next closest sectional that is not full
 		//Sectional[] ignored = new Sectional[]{testSec[1], testSec[3]};

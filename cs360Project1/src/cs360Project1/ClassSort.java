@@ -65,7 +65,15 @@ public class ClassSort
 		for (int q = 0; q < classifications.size(); q++)
 		{
 			//sectionals[q] = sectionalSort(classifications.getSchools(), classifications.getHostSchools, TODO:size of sectional?);
+			if (classifications.get(q).getRegionalNum() == 0)
+			{
+				System.out.println("There are 0 regionals");
+			}
 			//regionals[q] =;
+			if (classifications.get(q).getSemiNum() == 0)
+			{
+				System.out.println("There are 0 semi-states");
+			}
 			//semis[q] =;
 		}
 	}
@@ -79,6 +87,8 @@ public class ClassSort
 			//both add classification in school, and school in classification
 			currentSchool.setClassification(current);
 			classifications.get(current).addSchool(currentSchool);
+			//TODO: Test Case
+			//System.out.println("School:"+ currentSchool.getName() + " Enrollment:" + currentSchool.getEnrollment() + " Class:" + currentSchool.getClassification());
 			return 1;
 		}
 		//if the school's enrollment is more than current class's max, check next largest class

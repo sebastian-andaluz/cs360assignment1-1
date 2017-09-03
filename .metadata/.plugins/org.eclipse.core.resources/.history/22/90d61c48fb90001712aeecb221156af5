@@ -93,10 +93,6 @@ public class School {
 			}
 		}
 	}
-	public void setClassification(int newClassification)
-	{
-		classification = newClassification;
-	}
 	public int getClassification() {
 		return classification;
 	}
