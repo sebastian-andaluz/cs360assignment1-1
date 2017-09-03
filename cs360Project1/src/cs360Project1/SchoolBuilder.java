@@ -11,15 +11,16 @@ public class SchoolBuilder {
 	static ArrayList<School> hostSectionals = new ArrayList<School>();
 	static ArrayList<School> hostRegionals = new ArrayList<School>();
 	static ArrayList<School> hostSemis = new ArrayList<School>();
-	public static School[] getSchools(String[] input, int length) throws ApiException, InterruptedException, IOException{
-		
-		
+	
+	//returns and array of schools, and creates 3 ArrayLists of hosts (1 per level)
+	public static School[] getSchools(String[] input, int length) throws ApiException, InterruptedException, IOException
+	{
 		Mapping map = new Mapping();
 		int a = 0;
 		String temp;
 		String delimiter;
 		StringTokenizer splitter;
-				
+		
 		schools = new School[length];
 		delimiter = "*";
 		for(int i = 0; i < length; i++){
@@ -28,12 +29,11 @@ public class SchoolBuilder {
 			splitter = new StringTokenizer(input[i], delimiter);
 			schools[i].schoolName = splitter.nextToken();
 			schools[i].enrollment = Integer.parseInt(splitter.nextToken());
+			//TODO: Delete old code?
 			//schools[i].setCoordinates(map.getCoordinates(schools[i].schoolName));
 			//System.out.println(i);
 			//System.out.println(schools[i].schoolName);
 			//System.out.print(schools[i].coordinates[0] + " " + schools[i].coordinates[1] + "\n\n");
-			
-			//
 			
 			temp = splitter.nextToken();
 			if(temp.equalsIgnoreCase("T")){
@@ -42,8 +42,6 @@ public class SchoolBuilder {
 			else{
 				schools[i].boyTeam=false;
 			}
-			
-			//
 			
 			temp = splitter.nextToken();
 			if(temp.equalsIgnoreCase("T")){
@@ -54,7 +52,6 @@ public class SchoolBuilder {
 			}
 			
 			//
-			
 			temp = splitter.nextToken();
 			if(temp.equalsIgnoreCase("T"))
 			{
@@ -67,7 +64,6 @@ public class SchoolBuilder {
 			}
 			
 			//
-			
 			temp = splitter.nextToken();
 			if(temp.equalsIgnoreCase("T")){
 				schools[i].hostRegional=true;
@@ -90,25 +86,20 @@ public class SchoolBuilder {
 			
 			schools[i].setLng(Double.parseDouble(splitter.nextToken()));
 		}
-		
-		
+				
 		return schools;
-		
 	}
-	
+	//returns ArrayLists of schools that are sectional, regional, and semi-state hosts
 	public ArrayList<School> getSectionalHosts()
 	{
 		return hostSectionals;
 	}
-	
 	public ArrayList<School> getRegionalHosts()
 	{
 		return hostRegionals;
 	}
-	
 	public ArrayList<School> getSemiHosts()
 	{
 		return hostSemis;
 	}
-	
 }
