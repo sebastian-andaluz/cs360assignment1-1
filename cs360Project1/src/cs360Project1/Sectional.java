@@ -6,6 +6,8 @@ public class Sectional extends School {
 	
 	ArrayList<School> sectional = new ArrayList<School>();
 	int counter = 0;
+	boolean skippedSectional = false;
+	double distance;
 	
 	public Sectional (School host)
 	{
