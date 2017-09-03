@@ -8,7 +8,9 @@ public class Classification {
 	int maximumSize;
 	
 	ArrayList<School> schools = new ArrayList<School>();
-	ArrayList<School> hostSchools = new ArrayList<School>();
+	ArrayList<School> sectHostSchools = new ArrayList<School>();
+	ArrayList<School> regHostSchools = new ArrayList<School>();
+	ArrayList<School> semiHostSchools = new ArrayList<School>();
 	
 	int sectionalNum;
 	int regionalNum;
@@ -18,25 +20,41 @@ public class Classification {
 	Regional[] regionals;
 	SemiState[] semis;
 	
-	
+	//Constructor for a Classification
 	public Classification(int minSize, int maxSize){
 		minimumSize = minSize;
 		maximumSize = maxSize;
 	}
-	//add a school to the class
+	
+	//add and get schools in the class
 	public void addSchool(School toAdd){
 		schools.add(toAdd);	
 	}
 	public ArrayList<School> getSchools(){
 		return schools;
 	}
-	public void addHost(School toAdd){
-		hostSchools.add(toAdd);	
+	//add and get sectional host schools
+	public void addSectionalHost(School toAdd){
+		sectHostSchools.add(toAdd);	
 	}
-	public ArrayList<School> getHostSchools(){
-		return hostSchools;
+	public ArrayList<School> getSectionalHostSchools(){
+		return sectHostSchools;
 	}
-	//accessers and mutators
+	//add and get regional host schools
+	public void addRegionalHost(School toAdd){
+		regHostSchools.add(toAdd);	
+	}
+	public ArrayList<School> getRegionalHostSchools(){
+		return regHostSchools;
+	}
+	//add and get semi-state host schools
+	public void addSemiStateHost(School toAdd){
+		semiHostSchools.add(toAdd);	
+	}
+	public ArrayList<School> getSemiStateHostSchools(){
+		return semiHostSchools;
+	}
+	//mutate minimum and maximum enrollment size of a class
 	public void setMinimum(int newMin){
 		minimumSize = newMin;
 	}
@@ -49,10 +67,11 @@ public class Classification {
 	public int getMaximum(){
 		return maximumSize;
 	}
+	//returns the number of schools in the class
 	public int getClassSize(){
 		return schools.size();
 	}
-	//for sect,reg,semi setSize, return size, and return the array of schools in sect, etc
+	//for sectional setSize, return size, and return the array of schools in sect
 	public void setSectionalNum(int size){
 		sectionalNum = size;
 		sectionals = new Sectional[size];
@@ -63,6 +82,7 @@ public class Classification {
 	public Sectional[] getSectionals(){
 		return sectionals;
 	}
+	//for regional setSize, return size, and return the array of schools in sect
 	public void setRegionalNum(int size){
 		regionalNum = size;
 		regionals = new Regional[size];
@@ -73,6 +93,7 @@ public class Classification {
 	public Sectional[] getRegionals(){
 		return regionals;
 	}
+	//for semi-state setSize, return size, and return the array of schools in sect
 	public void setSemiNum(int size){
 		semiNum = size;
 		semis = new SemiState[size];
@@ -82,7 +103,5 @@ public class Classification {
 	}
 	public Sectional[] getsemis(){
 		return semis;
-	}
-	
-	
+	}	
 }
