@@ -73,7 +73,6 @@ public class School {
 	public void setName(String newName) {
 		schoolName = newName;
 	}
-	
 	public String getName() {
 		return schoolName;
 	}
@@ -84,14 +83,21 @@ public class School {
 	public int getEnrollment() {
 		return enrollment;
 	}
-	public void setClassification(int[] ranges) {
-		for (int x=0; x<ranges.length; x++) {
+	/* I Don't think this is used
+	public int setClassification(int[] ranges) {
+		int x;
+		for (x=0; x<ranges.length; x++) {
 			if (enrollment <= ranges[x])
 			{
 				classification = x + 1;
-				return;
+				return classification;
 			}
 		}
+		return -1;
+	}*/
+	public void setClassification(int newClassification)
+	{
+		classification = newClassification;
 	}
 	public int getClassification() {
 		return classification;
