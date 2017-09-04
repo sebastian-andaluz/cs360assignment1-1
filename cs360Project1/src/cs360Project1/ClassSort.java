@@ -64,7 +64,7 @@ public class ClassSort
 		//go through each class, and create the competitions
 		for (int q = 0; q < classifications.size(); q++)
 		{
-			//sectionals[q] = sectionalSort(classifications.getSchools(), classifications.getHostSchools, TODO:size of sectional?);
+			sectionals[q] = sectionalSort(classifications.getSchools(), classifications.getHostSchools, TODO:size of sectional?);
 			if (classifications.get(q).getRegionalNum() == 0)
 			{
 				System.out.println("There are 0 regionals");

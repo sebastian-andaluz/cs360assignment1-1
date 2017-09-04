@@ -2,13 +2,12 @@ INDEX VERSION 1.130+C:\Users\david\Documents\College\CS 360\cs360assignment1-1\.
 4287725201.index
 3288256315.index
 2742927171.index
-2911469802.index
 1475717011.index
+2911469802.index
 2997567257.index
 449440424.index
 1841280308.index
 843494433.index
-2666133364.index
 31922705.index
 1278422394.index
 3259746434.index
@@ -20,8 +19,8 @@ INDEX VERSION 1.130+C:\Users\david\Documents\College\CS 360\cs360assignment1-1\.
 1539866187.index
 2221491804.index
 30881555.index
-3192715265.index
 543038442.index
+3192715265.index
 750025430.index
 4070805460.index
 2940711538.index
