@@ -9,18 +9,12 @@ import java.util.Scanner;
 public class FileCrawler {
 		
 	
-	FileReader reader;
-	
-	
-	
-	
-	
-	
+	FileReader reader;	
 	public static int length(){
 		int j = 0;
 		Scanner scan = null;
 		String curLine = "";
-		File file = new File("SchoolList.txt");
+		File file = new File("SchoolList.txt");//CHANGE MADE HERE
 		try {
 			scan = new Scanner(file);
 		} catch (FileNotFoundException e) {
@@ -35,15 +29,12 @@ public class FileCrawler {
 		return j;
 		
 		
-	}
+	}	
 	
-		
-		
-	
-	public static String[] getArray(int x) {
+	public static String[] getSchoolArray(int x) {
 		int i = 0;
 		String[] array1;
-		File file = new File("SchoolList.txt");
+		File file = new File("SchoolList.txt");//CHANGE MADE HERE
 		array1 = new String[x];
 		Scanner skan = null;
 		try {

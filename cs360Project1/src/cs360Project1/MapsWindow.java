@@ -1,18 +1,37 @@
-/*
-import com.teamdev.jxbrowser.chromium.Browser;
-import com.teamdev.jxbrowser.chromium.BrowserFactory;
+package cs360Project1;
+
+import com.teamdev.jxbrowser.chromium.*;
+import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+
 import javax.swing.*;
 import java.awt.*;
-public class MapsWindow {
-    public static void main(String[] args) {
-        Browser browser = BrowserFactory.create();
-        JFrame frame = new JFrame("Map");
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+public class MapsWindow extends JFrame{
+    
+    
+    
+    
+    public MapsWindow(){
+        final Browser browser = new Browser();
+        JButton closeButton = new JButton("Exit");
+        closeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        
+        JPanel toolBar = new JPanel();
+        toolBar.add(closeButton);
+        
+        JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.add(browser.getView().getComponent(), BorderLayout.CENTER);
+        BrowserView browserView = new BrowserView(browser);
+        frame.add(browserView, BorderLayout.CENTER);
+        frame.add(toolBar, BorderLayout.NORTH);
         frame.setSize(700, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        browser.loadURL("http://maps.google.com");
+        browser.loadURL("C:\\file.html");
     }
 }
-*/

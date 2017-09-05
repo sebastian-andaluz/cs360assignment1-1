@@ -1,5 +1,5 @@
 =\=\=\=\=\=\=
-<<<<<<<=HEAD
->>>>>>>=175ce05ff6aa33a76bc5e727dc8ba941c0b45832
+<<<<<<<=Updated upstream
+>>>>>>>=Stashed changes
 eclipse.preferences.version=1
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1503955436994" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1503955436994" name\="jre1.8.0_131" path\="C\:\\Program Files\\Java\\jre1.8.0_131"/>\r\n</vmType>\r\n</vmSettings>\r\n
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1504622840691" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1504622840691" name\="jre1.8.0_131" path\="C\:\\Program Files\\Java\\jre1.8.0_131"/>\r\n</vmType>\r\n</vmSettings>\r\n

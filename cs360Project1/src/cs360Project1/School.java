@@ -1,10 +1,12 @@
 package cs360Project1;
+import java.util.ArrayList;
+
 import com.google.*;
 import com.google.maps.GeoApiContext;
 
 public class School {
 	String schoolName;
-	String schoolAddress;
+
 	int enrollment;	//Enrollment size of school
 	int classification;
 	//T/F There exists a boys/girls team
@@ -19,7 +21,11 @@ public class School {
 	int regionalNumber;
 	int semiNumber;
 	//array of distances to hosts of sectional
-	double [] distanceToSectionalHost;
+	////////double [] distanceToSectionalHost;
+	ArrayList<Double> distanceToSectionalHost = new ArrayList<Double>();
+	
+	double[] coordinates = new double[2];
+	
 	
 	//default constructor
 	public School(){
@@ -37,32 +43,41 @@ public class School {
 		hostSemi = semiHost;
 	}
 	//TODO: Need Distance
-	public void sectHostDistances(School[] sectionalHosts){
-		distanceToSectionalHost = new double[sectionalHosts.length];
-		for (int counter = 0; counter <= sectionalHosts.length; counter++){
+	public void sectHostDistances(ArrayList<School> sectionalHosts){//School[] sectionalHosts){
+		//distanceToSectionalHost = new double[sectionalHosts.length];
+		distanceToSectionalHost = new ArrayList<Double>(sectionalHosts.size());
+		for (int counter = 0; counter <= sectionalHosts.size(); counter++){
 			//TODO: Needs calcDistanceMethod
-			int distance = 0;
+			double distance = 0;
 			//distance = distanceMethod(school, hostSchool);
-			distanceToSectionalHost[counter] = distance;
+			////distanceToSectionalHost[counter] = distance;
+			
+			distanceToSectionalHost.add(counter, distance);
 		}
 	}
-		public double[] getHostDistances(){
-		return distanceToSectionalHost;
+	/*
+	 * Working method of distance to Host
+	 */
+	public double[] addDistanceToHost(School[] hostSchools)
+	{
+		double[] distances = new double[hostSchools.length];
+		
+		for(int j = 0; j < hostSchools.length; j++)
+		{
+			distances[j] = Mapping.getDistanceBetween(this.getLat(), this.getLng(), 
+					hostSchools[j].getLat(), hostSchools[j].getLng());
+		}
+		return distances;
 	}
 	
 	public void setName(String newName) {
 		schoolName = newName;
 	}
+	
 	public String getName() {
 		return schoolName;
 	}
-	//Address access
-	public void setAddress(String address){
-		schoolAddress = address;
-	}
-	public String getAddress(){
-		return schoolAddress;
-	}
+
 	public void setEnrollment(int newEnrollment) {
 		enrollment = newEnrollment;
 	}
@@ -77,6 +92,10 @@ public class School {
 				return;
 			}
 		}
+	}
+	public void setClassification(int newClassification)
+	{
+		classification = newClassification;
 	}
 	public int getClassification() {
 		return classification;
@@ -129,13 +148,52 @@ public class School {
 	public int getSemiNumber() {
 		return semiNumber;
 	}
-	public void setSectionalDistances(double[] distances) {
-		for (int x = 0; x < distances.length; x++) {
-			distanceToSectionalHost[x] = distances[x];
+	public void setSectionalDistances(ArrayList<Double> distances) {
+		for (int x = 0; x < distances.size(); x++) {
+			//distanceToSectionalHost[x] = distances[x];
+			distanceToSectionalHost.set(x, distances.get(x));
 		}
 	}
-	public double[] getSectionalDistances() {
+	public ArrayList<Double> getSectionalDistances() {
 		return distanceToSectionalHost;
+	}
+	//returns the distance to host school in position x
+	public double getSectionalDistances(int x)
+	{
+		return distanceToSectionalHost.get(x);
+	}
+	
+	public void setCoordinates(double[] coordinates)
+	{
+		for(int i = 0; i < coordinates.length; i++)
+		{
+			this.coordinates[i] = coordinates[i];
+		}
+	}
+	
+	public double[] getCoordinates()
+	{
+		return coordinates;
+	}
+	
+	public void setLat(double lat)
+	{
+		coordinates[0] = lat;
+	}
+	
+	public void setLng(double lng)
+	{
+		coordinates[1] = lng;
+	}
+	
+	public double getLat()
+	{
+		return coordinates[0];
+	}
+	
+	public double getLng()
+	{
+		return coordinates[1];
 	}
 
 }

@@ -1,25 +1,184 @@
 package cs360Project1;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import com.google.maps.errors.ApiException;
+
 public class driver {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ApiException, InterruptedException, IOException {
 		// TODO Auto-generated method stub
 		
 		MainGUI mainWindow = new MainGUI();
-		/*int a = FileCrawler.length();
+		int a = FileCrawler.length();
 		
-		System.out.println(a);
+		//System.out.println(a);
 		
-		String[] input;
+		String[] schoolInput;
 		
-		input = FileCrawler.getArray(a);
-		
-		System.out.println(input[391]);
-		
-		School[] schools = SchoolBuilder.getSchools(input, 393);
+		schoolInput = FileCrawler.getSchoolArray(a);
 		
 		
-		*/
+
+		System.out.println(schoolInput[391]);
+
+		//System.out.println(input[391]);
+		//TODO: make array of sectionals
+		School[] schools = SchoolBuilder.getSchools(schoolInput, a);
+
+		
+		ClassSort testSort = new ClassSort();
+		testSort.classSort(schools);
+		
+		
+		int secCounter = 0;
+		int regCounter = 0;
+		int semCounter = 0;
+		Sectional[] testSec = new Sectional[SchoolBuilder.hostSectionals.size()];
+		Regional[] testReg = new Regional[SchoolBuilder.hostRegionals.size()];
+		SemiState[] testSem = new SemiState[SchoolBuilder.hostSemis.size()];
+		
+
+		
+		
+		
+		
+
+
+		for(int i = 0; i < schools.length; i++)
+		{
+			if(schools[i].hostSectional == true)
+			{
+				//System.out.println(schools[i].schoolName);
+				testSec[secCounter] = new Sectional(schools[i]);
+				secCounter++;
+			}
+			
+			if(schools[i].hostRegional == true)
+			{
+				testReg[regCounter] = new Regional(schools[i]);
+				regCounter++;
+			}
+			
+			if(schools[i].hostSemi == true)
+			{
+				testSem[semCounter] = new SemiState(schools[i]);
+				semCounter++;
+			}
+		}
+		
+		SectionalSort sort = new SectionalSort();
+		sort.sortSectionals(schools, testSec, testSec.length);
+		
+		double total = 0;
+		
+		double avg = 0;
+		
+		for(int sect = 0; sect < testSec.length; sect++)
+		{
+			total = 0;
+			avg = 0;
+			for(int i = 0; i < testSec[sect].sectional.size(); i++)
+			{
+				total += Mapping.getDistanceBetween(testSec[sect].sectional.get(i).getLat(), testSec[sect].sectional.get(i).getLng(),
+						testSec[sect].getLat(), testSec[sect].getLng());
+			}
+			
+			avg = total/testSec[sect].sectional.size();
+			
+			System.out.println("Sectional " + (sect+1) + " Average: " + avg);
+			
+			for(int j = 0; j < testSec[sect].sectional.size(); j++)
+			{
+				System.out.print(testSec[sect].sectional.get(j).schoolName);
+				System.out.println(" distance: " + Mapping.getDistanceBetween(testSec[sect].sectional.get(j).getLat(), testSec[sect].sectional.get(j).getLng(),
+						testSec[sect].getLat(), testSec[sect].getLng()));
+			}
+			System.out.println("\n");
+		}
+		
+		System.out.println("\n\n");
+		
+		total = 0;
+		avg = 0;
+		
+		sort.sortRegionals(testSec, testReg, testReg.length);
+		
+		for(int reg = 0; reg < testReg.length; reg++)
+		{
+			total = 0;
+			avg = 0;
+			for(int i = 0; i < testReg[reg].regional.size(); i++)
+			{
+				total += Mapping.getDistanceBetween(testReg[reg].regional.get(i).getLat(), testReg[reg].regional.get(i).getLng(),
+						testReg[reg].getLat(), testReg[reg].getLng());
+			}
+			
+			avg = total/(testReg[reg].regional.size() - 1);
+			
+			System.out.println("Regional " + (reg+1) + " Average: " + avg);
+			for(int j = 0; j < testReg[reg].regional.size(); j++)
+			{
+				System.out.print(testReg[reg].regional.get(j).schoolName);
+				System.out.println(" distance: " + Mapping.getDistanceBetween(testReg[reg].regional.get(j).getLat(), testReg[reg].regional.get(j).getLng(),
+						testReg[reg].getLat(), testReg[reg].getLng()));
+			}
+			System.out.println("\n");
+		}
+		
+		System.out.println("\n\n");
+		
+		total = 0;
+		avg = 0;
+	
+		sort.sortSemis(testReg, testSem, testSem.length);
+		
+		for(int sem = 0; sem < testSem.length; sem++)
+		{
+			total = 0;
+			avg = 0;
+			for(int i = 0; i < testSem[sem].semi.size(); i++)
+			{
+				total += Mapping.getDistanceBetween(testSem[sem].semi.get(i).getLat(), testSem[sem].semi.get(i).getLng(),
+						testSem[sem].getLat(), testSem[sem].getLng());
+			}
+			
+			avg = total/(testSem[sem].semi.size() - 1);
+			
+			System.out.println("Semi " + (sem+1) + " Average: " + avg);
+			for(int j = 0; j < testSem[sem].semi.size(); j++)
+			{
+				System.out.print(testSem[sem].semi.get(j).schoolName);
+				System.out.println(" distance: " + Mapping.getDistanceBetween(testSem[sem].semi.get(j).getLat(), testSem[sem].semi.get(j).getLng(),
+						testSem[sem].getLat(), testSem[sem].getLng()));
+			}
+			System.out.println("\n");
+		}
+		
+		//test to see what is the next closest sectional that is not full
+		//Sectional[] ignored = new Sectional[]{testSec[1], testSec[3]};
+		ArrayList<Sectional> ignored = new ArrayList<Sectional>();
+		ignored.add(testSec[1]);
+		ignored.add(testSec[3]);
+		Sectional answer = sort.findClosestSectional(testSec[0].sectional.get(0), testSec, ignored);
+		System.out.println(answer.sectional.get(0).schoolName);
+		
+		
+		//test to see which school is farthest from a host and what is the distances from that school to all hosts
+		School farthest = sort.findFarthestFromHost(testSec[9]);
+		System.out.println(farthest.schoolName);
+		School eastSide = schools[120];
+		System.out.println(eastSide.schoolName);
+		double[] list = eastSide.addDistanceToHost(testSec);
+		for(int h = 0; h < testSec.length; h++)
+		{
+			System.out.println(list[h]);
+		}
+		
+		//double[] arr = schools[1].addDistanceToHost(SchoolBuilder.hostSectionals);
+		
+		//for(int i = 0; i < SchoolBuilder.hostSectionals.size(); i++){System.out.println(arr[i]);}
 
 	}
 	

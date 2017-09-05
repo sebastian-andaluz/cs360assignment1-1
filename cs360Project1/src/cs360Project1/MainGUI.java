@@ -60,6 +60,7 @@ public class MainGUI extends JFrame{
 	private JButton commandButton;
 	private JLabel textPane;
 	private JLabel lblNewLabel;
+	private MapsWindow map;
 	
 
 	// Constructor
@@ -102,12 +103,24 @@ public class MainGUI extends JFrame{
 			
 			mapButton = new JButton("      Map       ");
 			mapButton.setToolTipText("View Map");
+			mapButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	map = new MapsWindow();
+	                
+	            }
+	        });
+			
 			
 			commandButton = new JButton("Commands");
 			commandButton.setToolTipText("Enter Command");
 			
 			exitButton = new JButton("      Exit        ");
 			exitButton.setToolTipText("Closes The Program");
+			exitButton.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                System.exit(0);
+	            }
+	        });
 			
 			nameBar = new JButton("Name");
 			nameBar.setHorizontalAlignment(SwingConstants.LEFT);

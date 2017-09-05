@@ -1,0 +1,114 @@
+package cs360Project1;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+import com.google.maps.errors.ApiException;
+
+public class SchoolBuilder {
+	static School[] schools;
+	static ArrayList<School> hostSectionals = new ArrayList<School>();
+	static ArrayList<School> hostRegionals = new ArrayList<School>();
+	static ArrayList<School> hostSemis = new ArrayList<School>();
+	public static School[] getSchools(String[] input, int length) throws ApiException, InterruptedException, IOException{
+		
+		
+		Mapping map = new Mapping();
+		int a = 0;
+		String temp;
+		String delimiter;
+		StringTokenizer splitter;
+				
+		schools = new School[length];
+		delimiter = "*";
+		for(int i = 0; i < length; i++){
+			School tempSchool = new School();
+			schools[i] = tempSchool;
+			splitter = new StringTokenizer(input[i], delimiter);
+			schools[i].schoolName = splitter.nextToken();
+			schools[i].enrollment = Integer.parseInt(splitter.nextToken());
+			//schools[i].setCoordinates(map.getCoordinates(schools[i].schoolName));
+			System.out.println(i);
+			//System.out.println(schools[i].schoolName);
+			//System.out.print(schools[i].coordinates[0] + " " + schools[i].coordinates[1] + "\n\n");
+			
+			//
+			
+			temp = splitter.nextToken();
+			if(temp.equalsIgnoreCase("T")){
+				schools[i].boyTeam=true;
+			}
+			else{
+				schools[i].boyTeam=false;
+			}
+			
+			//
+			
+			temp = splitter.nextToken();
+			if(temp.equalsIgnoreCase("T")){
+				schools[i].girlTeam=true;
+			}
+			else{
+				schools[i].girlTeam=false;
+			}
+			
+			//
+			
+			temp = splitter.nextToken();
+			if(temp.equalsIgnoreCase("T"))
+			{
+				schools[i].hostSectional=true;
+				hostSectionals.add(schools[i]);
+			}
+			else
+			{
+				schools[i].hostSectional=false;
+			}
+			
+			//
+			
+			temp = splitter.nextToken();
+			if(temp.equalsIgnoreCase("T")){
+				schools[i].hostRegional=true;
+				hostRegionals.add(schools[i]);
+			}
+			else{
+				schools[i].hostRegional=false;
+			}
+			
+			temp = splitter.nextToken();
+			if(temp.equalsIgnoreCase("T")){
+				schools[i].hostSemi=true;
+				hostSemis.add(schools[i]);
+			}
+			else{
+				schools[i].hostSemi=false;
+			}
+			
+			schools[i].setLat(Double.parseDouble(splitter.nextToken()));
+			
+			schools[i].setLng(Double.parseDouble(splitter.nextToken()));
+		}
+		
+		
+		return schools;
+		
+	}
+	
+	public ArrayList<School> getSectionalHosts()
+	{
+		return hostSectionals;
+	}
+	
+	public ArrayList<School> getRegionalHosts()
+	{
+		return hostRegionals;
+	}
+	
+	public ArrayList<School> getSemiHosts()
+	{
+		return hostSemis;
+	}
+	
+}
