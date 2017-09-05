@@ -110,13 +110,12 @@ public class MainGUI extends JFrame{
 			exitButton.setToolTipText("Closes The Program");
 			
 			nameBar = new JButton("Name");
-			nameBar.setHorizontalAlignment(SwingConstants.LEFT);
 			nameBar.setVerticalAlignment(SwingConstants.TOP);
+			nameBar.setHorizontalAlignment(SwingConstants.LEFT);
 			coordsBar = new JButton("Location");
 			sectionalBar = new JButton("Sectional");
 			regionalBar = new JButton("Regional");
 			semiBar = new JButton("Semi-Final");
-			topOptions.setLayout(new BoxLayout(topOptions, BoxLayout.X_AXIS));
 			
 			topOptions.add(nameBar);
 			addressBar = new JButton("Address");
@@ -126,7 +125,7 @@ public class MainGUI extends JFrame{
 			topOptions.add(regionalBar);
 			topOptions.add(semiBar);
 			sideOptions.setLayout(new BoxLayout(sideOptions, BoxLayout.Y_AXIS));
-			schoolList.setLayout(new GridLayout(391, 391, 391, 391));
+			schoolList.setLayout(new GridLayout(1, 0, 0, 0));
 			
 			sideOptions.add(loadButton);
 			sideOptions.add(saveButton);
@@ -139,7 +138,7 @@ public class MainGUI extends JFrame{
 				for(int j = 0; j < 8; j++){
 			
 					textPane = new JLabel();
-					schoolList.add(textPane);
+					schoolList.add(textPane, BorderLayout.CENTER);
 				}
 			}
 			

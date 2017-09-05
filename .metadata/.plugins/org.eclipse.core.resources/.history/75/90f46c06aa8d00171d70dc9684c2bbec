@@ -126,7 +126,7 @@ public class MainGUI extends JFrame{
 			topOptions.add(regionalBar);
 			topOptions.add(semiBar);
 			sideOptions.setLayout(new BoxLayout(sideOptions, BoxLayout.Y_AXIS));
-			schoolList.setLayout(new GridLayout(391, 391, 391, 391));
+			schoolList.setLayout(new GridLayout(3, 0, 0, 0));
 			
 			sideOptions.add(loadButton);
 			sideOptions.add(saveButton);

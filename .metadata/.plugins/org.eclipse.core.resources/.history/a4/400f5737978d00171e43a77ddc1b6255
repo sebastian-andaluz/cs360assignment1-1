@@ -19,9 +19,6 @@ import java.net.URL;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
 
 public class MainGUI extends JFrame{
 	
@@ -58,8 +55,7 @@ public class MainGUI extends JFrame{
 	private JButton mapButton;
 	
 	private JButton commandButton;
-	private JLabel textPane;
-	private JLabel lblNewLabel;
+	private JTextPane textPane;
 	
 
 	// Constructor
@@ -88,35 +84,34 @@ public class MainGUI extends JFrame{
 			topOptions = new JPanel();
 			schoolList = new JPanel();
 			
-			loadButton = new JButton("      Load      ");
+			loadButton = new JButton("Load");
 			loadButton.setToolTipText("Loads a New School File");
 			
-			saveButton = new JButton("      Save      ");
+			saveButton = new JButton("Save");
 			saveButton.setToolTipText("Saves Changes");
 			
-			exportButton = new JButton("    Export     ");
+			exportButton = new JButton("Export");
 			exportButton.setToolTipText("Export Changes to New File");
 			
-			editButton = new JButton("      Edit        ");
+			editButton = new JButton("Edit");
 			editButton.setToolTipText("Edit Selected School's Info");
 			
-			mapButton = new JButton("      Map       ");
+			mapButton = new JButton("Map");
 			mapButton.setToolTipText("View Map");
 			
 			commandButton = new JButton("Commands");
 			commandButton.setToolTipText("Enter Command");
 			
-			exitButton = new JButton("      Exit        ");
+			exitButton = new JButton("Exit");
 			exitButton.setToolTipText("Closes The Program");
 			
 			nameBar = new JButton("Name");
-			nameBar.setHorizontalAlignment(SwingConstants.LEFT);
 			nameBar.setVerticalAlignment(SwingConstants.TOP);
+			nameBar.setHorizontalAlignment(SwingConstants.LEFT);
 			coordsBar = new JButton("Location");
 			sectionalBar = new JButton("Sectional");
 			regionalBar = new JButton("Regional");
 			semiBar = new JButton("Semi-Final");
-			topOptions.setLayout(new BoxLayout(topOptions, BoxLayout.X_AXIS));
 			
 			topOptions.add(nameBar);
 			addressBar = new JButton("Address");
@@ -125,8 +120,6 @@ public class MainGUI extends JFrame{
 			topOptions.add(sectionalBar);
 			topOptions.add(regionalBar);
 			topOptions.add(semiBar);
-			sideOptions.setLayout(new BoxLayout(sideOptions, BoxLayout.Y_AXIS));
-			schoolList.setLayout(new GridLayout(391, 391, 391, 391));
 			
 			sideOptions.add(loadButton);
 			sideOptions.add(saveButton);
@@ -135,22 +128,18 @@ public class MainGUI extends JFrame{
 			sideOptions.add(mapButton);
 			sideOptions.add(commandButton);
 			sideOptions.add(exitButton);
-			for(int i = 0; i < 500; i++){
-				for(int j = 0; j < 8; j++){
-			
-					textPane = new JLabel();
-					schoolList.add(textPane);
-				}
-			}
-			
 			
 			getContentPane().add(topOptions, BorderLayout.NORTH);
 			getContentPane().add(sideOptions, BorderLayout.EAST);
-			getContentPane().add(schoolList, BorderLayout.CENTER);
+			getContentPane().add(schoolList, BorderLayout.SOUTH);
 			
+			for(int i = 0; i < 500; i++){
+				for(int j = 0; j < 8; j++){
 			
-			
-			
-}
+			textPane = new JTextPane();
+			getContentPane().add(textPane, BorderLayout.CENTER);
+				}
+			}
+			}
 }
 
