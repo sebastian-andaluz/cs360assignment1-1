@@ -2,65 +2,94 @@ package cs360Project1;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.google.maps.errors.ApiException;
 
-public class driver {
-
+public class Driver {
+	static School[] schools;
+	static Scanner kb = new Scanner(System.in);
+	
 	public static void main(String[] args) throws ApiException, InterruptedException, IOException {
 		// TODO Auto-generated method stub
 		
-		MainGUI mainWindow = new MainGUI();
+		//MainGUI mainWindow = new MainGUI();
 		int a = FileCrawler.length();
-		
-		//System.out.println(a);
-		
+			
+		//creates a string that will be assigned to what was read from a file
 		String[] schoolInput;
 		
+		//uses that string to be what was in the file
 		schoolInput = FileCrawler.getSchoolArray(a);
 		
+		//creates the schools after reading the files
+		schools = SchoolBuilder.getSchools(schoolInput, a);
 		
-
-		System.out.println(schoolInput[391]);
-
-		//System.out.println(input[391]);
-		//TODO: make array of sectionals
-		School[] schools = SchoolBuilder.getSchools(schoolInput, a);
-
+		//asks if they want a 5th semi or class sort
+		System.out.println("Would you like Class Sort or a 5th Semi?");
+		int choice = kb.nextInt();
 		
+		//if the first choice, class structure, if the second choice, fifth semi
+		if(choice == 0)
+		{
+			sortClass();
+		}
+		else if(choice == 1)
+		{
+			fifthSemi();
+		}
+		
+	}
+	
+	public static void sortClass()
+	{
+		//creates and calls the class sort and it's sort method
 		ClassSort testSort = new ClassSort();
 		testSort.classSort(schools);
-		
-		
+	}
+	
+	public static void fifthSemi()
+	{
+		//counter for how many sectionals, regionals, and semis
 		int secCounter = 0;
-		int regCounter = 0;
+		int regCounter = 0;	
 		int semCounter = 0;
+		
+		//arrays created for sectionals, regionals, and semis
 		Sectional[] testSec = new Sectional[SchoolBuilder.hostSectionals.size()];
 		Regional[] testReg = new Regional[SchoolBuilder.hostRegionals.size()];
-		SemiState[] testSem = new SemiState[SchoolBuilder.hostSemis.size()];
+		SemiState[] testSem = new SemiState[SchoolBuilder.hostSemis.size()+1];
+		//adds 5th semi
+		System.out.println("School to add:");
+		kb.nextLine();
+		String schoolToAdd = kb.nextLine();
+		//finds it in the array of all schools and assigns it
+		for(int i = 0; i < schools.length; i++)
+		{
+			if(SchoolBuilder.schools[i].schoolName.equalsIgnoreCase(schoolToAdd))
+			{
+				SchoolBuilder.hostSemis.add(new SemiState(schools[i]));
+				schools[i].hostSemi = true;
+			}
+		}
 		
-
-		
-		
-		
-		
-
-
+		//finds and assigns all sectionals
 		for(int i = 0; i < schools.length; i++)
 		{
 			if(schools[i].hostSectional == true)
 			{
-				//System.out.println(schools[i].schoolName);
 				testSec[secCounter] = new Sectional(schools[i]);
 				secCounter++;
 			}
 			
+			//finds and assigns all regionals
 			if(schools[i].hostRegional == true)
 			{
 				testReg[regCounter] = new Regional(schools[i]);
 				regCounter++;
 			}
 			
+			//finds and assigns all semis
 			if(schools[i].hostSemi == true)
 			{
 				testSem[semCounter] = new SemiState(schools[i]);
@@ -68,13 +97,15 @@ public class driver {
 			}
 		}
 		
+		//creates a sectional object for sorting sectionals
 		SectionalSort sort = new SectionalSort();
-		sort.sortSectionals(schools, testSec, testSec.length);
+		sort.sortSectionals(schools, testSec, testSec.length, false);
 		
+		//average and total for each sectional, regional, and semi
 		double total = 0;
-		
 		double avg = 0;
 		
+		//finds average and prints the sectionals
 		for(int sect = 0; sect < testSec.length; sect++)
 		{
 			total = 0;
@@ -100,11 +131,14 @@ public class driver {
 		
 		System.out.println("\n\n");
 		
+		//resets total and average
 		total = 0;
 		avg = 0;
 		
-		sort.sortRegionals(testSec, testReg, testReg.length);
+		//sorts the regionals
+		sort.sortRegionals(testSec, testReg, testReg.length, false);
 		
+		//finds the total and average of regionals and prints it
 		for(int reg = 0; reg < testReg.length; reg++)
 		{
 			total = 0;
@@ -129,11 +163,14 @@ public class driver {
 		
 		System.out.println("\n\n");
 		
+		//resets the total and average
 		total = 0;
 		avg = 0;
 	
+		//calls the sort method for semis
 		sort.sortSemis(testReg, testSem, testSem.length);
 		
+		//calculates average and total of semi and prints it out
 		for(int sem = 0; sem < testSem.length; sem++)
 		{
 			total = 0;
@@ -156,31 +193,5 @@ public class driver {
 			System.out.println("\n");
 		}
 		
-		//test to see what is the next closest sectional that is not full
-		//Sectional[] ignored = new Sectional[]{testSec[1], testSec[3]};
-		ArrayList<Sectional> ignored = new ArrayList<Sectional>();
-		ignored.add(testSec[1]);
-		ignored.add(testSec[3]);
-		Sectional answer = sort.findClosestSectional(testSec[0].sectional.get(0), testSec, ignored);
-		System.out.println(answer.sectional.get(0).schoolName);
-		
-		
-		//test to see which school is farthest from a host and what is the distances from that school to all hosts
-		School farthest = sort.findFarthestFromHost(testSec[9]);
-		System.out.println(farthest.schoolName);
-		School eastSide = schools[120];
-		System.out.println(eastSide.schoolName);
-		double[] list = eastSide.addDistanceToHost(testSec);
-		for(int h = 0; h < testSec.length; h++)
-		{
-			System.out.println(list[h]);
-		}
-		
-		//double[] arr = schools[1].addDistanceToHost(SchoolBuilder.hostSectionals);
-		
-		//for(int i = 0; i < SchoolBuilder.hostSectionals.size(); i++){System.out.println(arr[i]);}
-
 	}
-	
-	
 }

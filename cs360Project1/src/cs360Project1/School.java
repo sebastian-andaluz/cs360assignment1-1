@@ -5,10 +5,10 @@ import com.google.*;
 import com.google.maps.GeoApiContext;
 
 public class School {
-	String schoolName;
+	String schoolName; //holds the schools name
 
 	int enrollment;	//Enrollment size of school
-	int classification;
+	int classification; //stores the classification of the school
 	//T/F There exists a boys/girls team
 	boolean boyTeam;
 	boolean girlTeam;
@@ -21,7 +21,7 @@ public class School {
 	int regionalNumber;
 	int semiNumber;
 	//array of distances to hosts of sectional
-	////////double [] distanceToSectionalHost;
+	//TODO:remove double [] distanceToSectionalHost;
 	ArrayList<Double> distanceToSectionalHost = new ArrayList<Double>();
 	
 	double[] coordinates = new double[2];
@@ -42,7 +42,7 @@ public class School {
 		hostRegional = regionalHost;
 		hostSemi = semiHost;
 	}
-	//TODO: Need Distance
+	//TODO:REMOVE? Need Distance
 	public void sectHostDistances(ArrayList<School> sectionalHosts){//School[] sectionalHosts){
 		//distanceToSectionalHost = new double[sectionalHosts.length];
 		distanceToSectionalHost = new ArrayList<Double>(sectionalHosts.size());
@@ -69,21 +69,22 @@ public class School {
 		}
 		return distances;
 	}
-	
+	//mutate and access Name
 	public void setName(String newName) {
 		schoolName = newName;
 	}
-	
 	public String getName() {
 		return schoolName;
 	}
-
+	//mutate and access Enrollment
 	public void setEnrollment(int newEnrollment) {
 		enrollment = newEnrollment;
 	}
 	public int getEnrollment() {
 		return enrollment;
 	}
+	//mutate and access Classification
+	//TODO: REMOVE?
 	public void setClassification(int[] ranges) {
 		for (int x=0; x<ranges.length; x++) {
 			if (enrollment <= ranges[x])
@@ -100,60 +101,69 @@ public class School {
 	public int getClassification() {
 		return classification;
 	}
+	//mutate and access BoyTeam (if one exists/not)
 	public void setBoyTeam(boolean newTeam) {
 		boyTeam = newTeam;
 	}
 	public boolean getBoyTeam() {
 		return boyTeam;
 	}
+	//mutate and access GirlTeam (if one exists/not)
 	public void setGirlTeam(boolean newTeam) {
 		girlTeam = newTeam;
 	}
 	public boolean getGirlTeam() {
 		return girlTeam;
 	}
+	//mutate and access willingness to host sectional
 	public void setWillHostSectional(boolean willing){
 		hostSectional = willing;
 	}
 	public boolean getWillHostSectional(){
 		return hostSectional;
 	}
+	//mutate and access willingness to host regional
 	public void setWillHostRegional(boolean willing){
 		hostRegional = willing;
 	}
 	public boolean getWillHostRegional(){
 		return hostRegional;
 	}
+	//mutate and access willingness to host semi-state
 	public void setWillHostSemi(boolean willing){
 		hostSemi = willing;
 	}
 	public boolean getWillHostSemi(){
 		return hostSemi;
 	}
+	//mutate and access the identification number for assigned sectional
 	public void setSectionalNumber(int number) {
 		sectionalNumber = number;
 	}
 	public int getSectionalNumber() {
 		return sectionalNumber;
 	}
+	//mutate and access the identification number for assigned regional
 	public void setRegionalNumber(int number) {
 		regionalNumber = number;
 	}
 	public int getRegionalNumber() {
 		return regionalNumber;
 	}
+	//mutate and access the identification number for assigned semi-state
 	public void setSemiNumber(int number) {
 		semiNumber = number;
 	}
 	public int getSemiNumber() {
 		return semiNumber;
 	}
+	//instantiate the ArrayList of distances to sectional hosts
 	public void setSectionalDistances(ArrayList<Double> distances) {
 		for (int x = 0; x < distances.size(); x++) {
-			//distanceToSectionalHost[x] = distances[x];
 			distanceToSectionalHost.set(x, distances.get(x));
 		}
 	}
+	//access the ArrayList of distances to sectional hosts
 	public ArrayList<Double> getSectionalDistances() {
 		return distanceToSectionalHost;
 	}
@@ -162,7 +172,7 @@ public class School {
 	{
 		return distanceToSectionalHost.get(x);
 	}
-	
+	//mutate and access the latitude & longitude of the school
 	public void setCoordinates(double[] coordinates)
 	{
 		for(int i = 0; i < coordinates.length; i++)
@@ -170,30 +180,26 @@ public class School {
 			this.coordinates[i] = coordinates[i];
 		}
 	}
-	
 	public double[] getCoordinates()
 	{
 		return coordinates;
 	}
-	
+	//mutate and access the latitude of the school
 	public void setLat(double lat)
 	{
 		coordinates[0] = lat;
 	}
-	
-	public void setLng(double lng)
-	{
-		coordinates[1] = lng;
-	}
-	
 	public double getLat()
 	{
 		return coordinates[0];
 	}
-	
+	//mutate and access the longitude of the school
+	public void setLng(double lng)
+	{
+		coordinates[1] = lng;
+	}
 	public double getLng()
 	{
 		return coordinates[1];
 	}
-
 }
