@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import com.google.maps.errors.ApiException;
 
-public class driver {
+public class Driver {
 	static School[] schools;
 	static Scanner kb = new Scanner(System.in);
 	
