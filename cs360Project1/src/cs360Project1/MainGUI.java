@@ -29,42 +29,34 @@ public class MainGUI extends JFrame{
 	
 	private JPanel topOptions;
 	
-	private JPanel schoolList;
+	private JScrollPane schoolList;
 	
 	private JButton loadButton;
-	
 	private JButton saveButton;
-	
 	private JButton exportButton;
-	
 	private JButton editButton;
-	
 	private JButton nameBar;
-	
 	private JButton addressBar;
-	
 	private JButton coordsBar;
-	
 	private JButton sizeBar;
-	
 	private JButton sectionalBar;
-	
 	private JButton regionalBar;
-	
 	private JButton semiBar;
-	
 	private JButton exitButton;
-	
 	private JButton mapButton;
-	
 	private JButton commandButton;
+	
 	private JLabel textPane;
 	private JLabel lblNewLabel;
+	
+	
+	private Object data[][];
 	private MapsWindow map;
+	private JTable table;
 	
 
 	// Constructor
-		public MainGUI(){
+		public MainGUI(School[] schools){
 			
 			setTitle("Indiana Sports Manager");
 			
@@ -75,7 +67,7 @@ public class MainGUI extends JFrame{
 			getContentPane().setLayout(new BorderLayout());
 			
 						
-			buildPanel();
+			buildPanel(schools);
 			
 			
 					
@@ -83,11 +75,11 @@ public class MainGUI extends JFrame{
 			
 		}
 		// Building the panels
-		public void buildPanel(){
+		public void buildPanel(School[] schools){
 			
 			sideOptions = new JPanel();
 			topOptions = new JPanel();
-			schoolList = new JPanel();
+			
 			
 			loadButton = new JButton("      Load      ");
 			loadButton.setToolTipText("Loads a New School File");
@@ -138,8 +130,7 @@ public class MainGUI extends JFrame{
 			topOptions.add(sectionalBar);
 			topOptions.add(regionalBar);
 			topOptions.add(semiBar);
-			sideOptions.setLayout(new BoxLayout(sideOptions, BoxLayout.Y_AXIS));
-			schoolList.setLayout(new GridLayout(391, 391, 391, 391));
+			sideOptions.setLayout(new BoxLayout(sideOptions, BoxLayout.X_AXIS));
 			
 			sideOptions.add(loadButton);
 			sideOptions.add(saveButton);
@@ -148,18 +139,46 @@ public class MainGUI extends JFrame{
 			sideOptions.add(mapButton);
 			sideOptions.add(commandButton);
 			sideOptions.add(exitButton);
-			for(int i = 0; i < 500; i++){
-				for(int j = 0; j < 8; j++){
+			for(int i = 0; i < 321; i++){
+				for(int j = 0; j < 6; j++){
 			
-					textPane = new JLabel();
-					schoolList.add(textPane);
+					
 				}
+			}
+			String[] tableTop = {"Name", "Coordinates", "Population","Sectional","Regional","Semi Final"};
+			data = new Object[391][6];
+			
+			for(int i = 0; i < 391; i++){
+				data[i][0] = schools[i].getName();
+				data[i][1] = schools[i].getCoordinates();
+				data[i][2] = schools[i].getEnrollment();
+				data[i][3] = schools[i].getSectionalNumber();
+				data[i][4] = schools[i].getRegionalNumber();
+				data[i][5] = schools[i].getSemiNumber();
+				
 			}
 			
 			
+			/*
+			for(int i = 0; i < 321; i++){
+				for(int j = 0; j < 6; j++){
+					data[i][j] = "Bread";
+					
+				}
+			}
+			*/
+			table = new JTable(data, tableTop);
+			
+			schoolList = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+			
+			
+			
 			getContentPane().add(topOptions, BorderLayout.NORTH);
-			getContentPane().add(sideOptions, BorderLayout.EAST);
+			getContentPane().add(sideOptions, BorderLayout.SOUTH);
 			getContentPane().add(schoolList, BorderLayout.CENTER);
+			
+			
+			
 			
 			
 			

@@ -13,23 +13,20 @@ public class MapsWindow extends JFrame{
     
     
     public MapsWindow(){
+    	setTitle("Map View");
         final Browser browser = new Browser();
-        JButton closeButton = new JButton("Exit");
-        closeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        
+        ;
         
         JPanel toolBar = new JPanel();
-        toolBar.add(closeButton);
+        
         
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         BrowserView browserView = new BrowserView(browser);
         frame.add(browserView, BorderLayout.CENTER);
         frame.add(toolBar, BorderLayout.NORTH);
-        frame.setSize(700, 500);
+        frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         browser.loadURL("C:\\file.html");
